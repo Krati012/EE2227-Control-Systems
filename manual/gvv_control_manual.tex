@@ -1,96 +1,381 @@
-\begin{enumerate}[label=\thesection.\arabic*.,ref=\thesection.\theenumi]
-\numberwithin{equation}{enumi}
-\item A unity negative feedback system has the open loop transfer function \\
-\begin{align}
-    G(s) = \frac{K}{s(s+1)(s+3)} 
-    \label{eq:t1}
-\end{align}
-The value of the gain K ($>$0) at which the root locus crosses the imaginary axis is ?
+\documentclass[journal,12pt,twocolumn]{IEEEtran}
+%
+\usepackage{setspace}
+\usepackage{gensymb}
+%\doublespacing
+\singlespacing
 
-\solution
+%\usepackage{graphicx}
+%\usepackage{amssymb}
+%\usepackage{relsize}
+\usepackage[cmex10]{amsmath}
+%\usepackage{amsthm}
+%\interdisplaylinepenalty=2500
+%\savesymbol{iint}
+%\usepackage{txfonts}
+%\restoresymbol{TXF}{iint}
+%\usepackage{wasysym}
+\usepackage{amsthm}
+%\usepackage{iithtlc}
+\usepackage{mathrsfs}
+\usepackage{txfonts}
+\usepackage{stfloats}
+\usepackage{bm}
+\usepackage{cite}
+\usepackage{cases}
+\usepackage{subfig}
+%\usepackage{xtab}
+\usepackage{longtable}
+\usepackage{multirow}
+%\usepackage{algorithm}
+%\usepackage{algpseudocode}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage{verbatim}
+\usepackage{tfrupee}
+\usepackage[breaklinks=true]{hyperref}
+%\usepackage{stmaryrd}
+\usepackage{tkz-euclide} % loads  TikZ and tkz-base
+\usetkzobj{all}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{shapes.geometric}
+\newif\iflabrev
+\usepackage{listings}
+    \usepackage{color}                                            %%
+    \usepackage{array}                                            %%
+    \usepackage{longtable}                                        %%
+    \usepackage{calc}                                             %%
+    \usepackage{multirow}                                         %%
+    \usepackage{hhline}                                           %%
+    \usepackage{ifthen}                                           %%
+  %optionally (for landscape tables embedded in another document): %%
+    \usepackage{lscape}     
+\usepackage{multicol}
+\usepackage{chngcntr}
+%\usepackage{enumerate}
 
-\item Root Locus: 
+%\usepackage{wasysym}
+%\newcounter{MYtempeqncnt}
+\DeclareMathOperator*{\Res}{Res}
+%\renewcommand{\baselinestretch}{2}
+\renewcommand\thesection{\arabic{section}}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+\renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
 
-	  The Root locus is the locus of the roots of the characteristic equation, which are the poles of closed loop transfer function, by varying system gain K from $0$ to $\infty$.
+\renewcommand\thesectiondis{\arabic{section}}
+\renewcommand\thesubsectiondis{\thesectiondis.\arabic{subsection}}
+\renewcommand\thesubsubsectiondis{\thesubsectiondis.\arabic{subsubsection}}
 
-\item The characteristic equation of the closed loop control system is: 
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+\def\inputGnumericTable{}                                 %%
 
-    \begin{align}
-         1 + G(s)H(s) = 0    
-    \end{align}
-    
-    The points on the root locus branches must satisfy the \textbf{angle condition.}
-    We can find the value of K for the points on the root locus branches by using \textbf{magnitude condition.}
+\lstset{
+%language=C,
+frame=single, 
+breaklines=true,
+columns=fullflexible
+}
+%\lstset{
+%language=tex,
+%frame=single, 
+%breaklines=true
+%}
 
-\item Angle Condition: 
+\begin{document}
+%
 
-    Given the Characteristic equation, we can write it as:
-    \begin{align}
-         G(s)H(s) = -1 + j0   
-    \end{align}
-    The phase angle of G(s)H(s) is:
-    $\angle$G(s)H(s) =\[ \arctan(\frac{0}{-1}) = (2n+1)\pi\]
-    The angle condition is the point at which the angle of the transfer function is an odd multiple of 180.
-   
-\item Magnitude Condition :
 
-    Magnitude of G(s)H(s) is:
-    \begin{align}
-        |G(s)H(s)| = \sqrt{(-1)^2 + 0^2}
-    \end{align}
-    $\implies$
-    \begin{align}
-        |G(s)H(s)| =1 
-    \end{align}
-    The magnitude condition is that the point (which satisfied the angle condition) at which the magnitude of the transfer function is one.
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{problem}{Problem}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}{Example}[section]
+\newtheorem{definition}[problem]{Definition}
+%\newtheorem{thm}{Theorem}[section] 
+%\newtheorem{defn}[thm]{Definition}
+%\newtheorem{algorithm}{Algorithm}[section]
+%\newtheorem{cor}{Corollary}
+\newcommand{\BEQA}{\begin{eqnarray}}
+\newcommand{\EEQA}{\end{eqnarray}}
+\newcommand{\define}{\stackrel{\triangle}{=}}
 
-\item For given transfer function: 
+\bibliographystyle{IEEEtran}
+%\bibliographystyle{ieeetr}
 
-    H(s) = 1. So, closed loop transfer function will be
-    \begin{align}
-        T(s) = \frac{K}{s(s+1)(s+3)+K}
-    \end{align}
-    Poles of closed loop transfer function are the roots of the Characteristic Equation.
-    So, characteristic Equation is:
-    \begin{align}
-        s^3 + 4s^2 + 3s + K = 0
-    \end{align}
 
-\item Routh Array Table:
+\providecommand{\mbf}{\mathbf}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\qfunc}[1]{\ensuremath{Q\left(#1\right)}}
+\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
+\providecommand{\lsbrak}[1]{\ensuremath{{}\left[#1\right.}}
+\providecommand{\rsbrak}[1]{\ensuremath{{}\left.#1\right]}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\lbrak}[1]{\ensuremath{\left(#1\right.}}
+\providecommand{\rbrak}[1]{\ensuremath{\left.#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\providecommand{\lcbrak}[1]{\ensuremath{\left\{#1\right.}}
+\providecommand{\rcbrak}[1]{\ensuremath{\left.#1\right\}}}
+\theoremstyle{remark}
+\newtheorem{rem}{Remark}
+\newcommand{\sgn}{\mathop{\mathrm{sgn}}}
+\providecommand{\abs}[1]{\left\vert#1\right\vert}
+\providecommand{\res}[1]{\Res\displaylimits_{#1}} 
+\providecommand{\norm}[1]{\left\lVert#1\right\rVert}
+%\providecommand{\norm}[1]{\lVert#1\rVert}
+\providecommand{\mtx}[1]{\mathbf{#1}}
+\providecommand{\mean}[1]{E\left[ #1 \right]}
+\providecommand{\fourier}{\overset{\mathcal{F}}{ \rightleftharpoons}}
+%\providecommand{\hilbert}{\overset{\mathcal{H}}{ \rightleftharpoons}}
+\providecommand{\system}{\overset{\mathcal{H}}{ \longleftrightarrow}}
+	%\newcommand{\solution}[2]{\textbf{Solution:}{#1}}
+\newcommand{\solution}{\noindent \textbf{Solution: }}
+\newcommand{\cosec}{\,\text{cosec}\,}
+\providecommand{\dec}[2]{\ensuremath{\overset{#1}{\underset{#2}{\gtrless}}}}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+%\numberwithin{equation}{section}
+\numberwithin{equation}{subsection}
+%\numberwithin{problem}{section}
+%\numberwithin{definition}{section}
+\makeatletter
+\@addtoreset{figure}{problem}
+\makeatother
 
-    \textbf{If all elements of any row of the Routh array table are zero, then the root locus branch intersects the imaginary axis}\\
-    Routh Array Table:
-    \begin{align}
-        \mydet{s^3\\s^2\\s^1\\s^0}
-        \mydet{1 & 3\\ 4 & K \\ (12-K)/4 & 0 \\ K}
-    \end{align}\\
-    For poles to be on imaginary axis, row $s^1$ should be zero. So,     
-    \begin{align}
-        \frac{12-K}{4} = 0
-    \end{align}
-    Hence, K = 12.
+\let\StandardTheFigure\thefigure
+\let\vec\mathbf
+%\renewcommand{\thefigure}{\theproblem.\arabic{figure}}
+\renewcommand{\thefigure}{\theproblem}
+%\setlist[enumerate,1]{before=\renewcommand\theequation{\theenumi.\arabic{equation}}
+%\counterwithin{equation}{enumi}
 
-\item Verification: 
 
-    Auxilliary equation:
-    \begin{align}
-        4s^2 + K = 0
-    \end{align}
-    \begin{align}
-        4s^2 + 12 = 0
-    \end{align}
-    $\implies$s = $-j\sqrt{3}$,$+j\sqrt{3}$ .
-    Thus a pair of poles lie on imaginary axis for K = 12.
-   
+%\renewcommand{\theequation}{\arabic{subsection}.\arabic{equation}}
 
-\item Root Locus plot
-    \begin{figure}[!h]
-        \includegraphics[width=\columnwidth]{./figs/ee18btech11050.eps}
-    \end{figure}
+\def\putbox#1#2#3{\makebox[0in][l]{\makebox[#1][l]{}\raisebox{\baselineskip}[0in][0in]{\raisebox{#2}[0in][0in]{#3}}}}
+     \def\rightbox#1{\makebox[0in][r]{#1}}
+     \def\centbox#1{\makebox[0in]{#1}}
+     \def\topbox#1{\raisebox{-\baselineskip}[0in][0in]{#1}}
+     \def\midbox#1{\raisebox{-0.5\baselineskip}[0in][0in]{#1}}
+
+\vspace{3cm}
+
+\title{
+%	\logo{
+Control Systems
+%	}
+}
+\author{ G V V Sharma$^{*}$% <-this % stops a space
+	\thanks{*The author is with the Department
+		of Electrical Engineering, Indian Institute of Technology, Hyderabad
+		502285 India e-mail:  gadepall@iith.ac.in. All content in this manual is released under GNU GPL.  Free and open source.}
 	
-Code to plot root locus:
-\begin{lstlisting}
-codes/ee18btech11050.py
-\end{lstlisting}    
+}	
+%\title{
+%	\logo{Matrix Analysis through Octave}{\begin{center}\includegraphics[scale=.24]{tlc}\end{center}}{}{HAMDSP}
+%}
 
-\end{enumerate}
+
+% paper title
+% can use linebreaks \\ within to get better formatting as desired
+%\title{Matrix Analysis through Octave}
+%
+%
+% author names and IEEE memberships
+% note positions of commas and nonbreaking spaces ( ~ ) LaTeX will not break
+% a structure at a ~ so this keeps an author's name from being broken across
+% two lines.
+% use \thanks{} to gain access to the first footnote area
+% a separate \thanks must be used for each paragraph as LaTeX2e's \thanks
+% was not built to handle multiple paragraphs
+%
+
+%\author{<-this % stops a space
+%\thanks{}}
+%}
+% note the % following the last \IEEEmembership and also \thanks - 
+% these prevent an unwanted space from occurring between the last author name
+% and the end of the author line. i.e., if you had this:
+% 
+% \author{....lastname \thanks{...} \thanks{...} }
+%                     ^------------^------------^----Do not want these spaces!
+%
+% a space would be appended to the last name and could cause every name on that
+% line to be shifted left slightly. This is one of those "LaTeX things". For
+% instance, "\textbf{A} \textbf{B}" will typeset as "A B" not "AB". To get
+% "AB" then you have to do: "\textbf{A}\textbf{B}"
+% \thanks is no different in this regard, so shield the last } of each \thanks
+% that ends a line with a % and do not let a space in before the next \thanks.
+% Spaces after \IEEEmembership other than the last one are OK (and needed) as
+% you are supposed to have spaces between the names. For what it is worth,
+% this is a minor point as most people would not even notice if the said evil
+% space somehow managed to creep in.
+
+
+
+% The paper headers
+%\markboth{Journal of \LaTeX\ Class Files,~Vol.~6, No.~1, January~2007}%
+%{Shell \MakeLowercase{\textit{et al.}}: Bare Demo of IEEEtran.cls for Journals}
+% The only time the second header will appear is for the odd numbered pages
+% after the title page when using the twoside option.
+% 
+% *** Note that you probably will NOT want to include the author's ***
+% *** name in the headers of peer review papers.                   ***
+% You can use \ifCLASSOPTIONpeerreview for conditional compilation here if
+% you desire.
+
+
+
+
+% If you want to put a publisher's ID mark on the page you can do it like
+% this:
+%\IEEEpubid{0000--0000/00\$00.00~\copyright~2007 IEEE}
+% Remember, if you use this you must call \IEEEpubidadjcol in the second
+% column for its text to clear the IEEEpubid mark.
+
+
+
+% make the title area
+\maketitle
+
+\newpage
+
+\tableofcontents
+
+\bigskip
+
+\renewcommand{\thefigure}{\theenumi}
+\renewcommand{\thetable}{\theenumi}
+%\renewcommand{\theequation}{\theenumi}
+
+%\begin{abstract}
+%%\boldmath
+%In this letter, an algorithm for evaluating the exact analytical bit error rate  (BER)  for the piecewise linear (PL) combiner for  multiple relays is presented. Previous results were available only for upto three relays. The algorithm is unique in the sense that  the actual mathematical expressions, that are prohibitively large, need not be explicitly obtained. The diversity gain due to multiple relays is shown through plots of the analytical BER, well supported by simulations. 
+%
+%\end{abstract}
+% IEEEtran.cls defaults to using nonbold math in the Abstract.
+% This preserves the distinction between vectors and scalars. However,
+% if the journal you are submitting to favors bold math in the abstract,
+% then you can use LaTeX's standard command \boldmath at the very start
+% of the abstract to achieve this. Many IEEE journals frown on math
+% in the abstract anyway.
+
+% Note that keywords are not normally used for peerreview papers.
+%\begin{IEEEkeywords}
+%Cooperative diversity, decode and forward, piecewise linear
+%\end{IEEEkeywords}
+
+
+
+% For peer review papers, you can put extra information on the cover
+% page as needed:
+% \ifCLASSOPTIONpeerreview
+% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+% \fi
+%
+% For peerreview papers, this IEEEtran command inserts a page break and
+% creates the second title. It will be ignored for other modes.
+%\IEEEpeerreviewmaketitle
+
+\begin{abstract}
+This manual is an introduction to control systems based on GATE problems.Links to sample Python codes are available in the text.  
+\end{abstract}
+Download python codes using 
+\begin{lstlisting}
+svn co https://github.com/gadepall/school/trunk/control/codes
+\end{lstlisting}
+
+\section{Signal Flow Graph}
+\subsection{Mason's Gain Formula}
+%\input{./chapters/ee18btech11003.tex}
+\subsection{Matrix Formula}
+%\input{./chapters/ee18btech11007_1.tex}
+%\subsection{Example}
+%\input{./chapters/ee18btech11029.tex}
+\section{Bode Plot}
+\subsection{Introduction}
+%\input{./chapters/ee18btech11001.tex}
+\subsection{Example}
+%\input{./chapters/ee18btech11009.tex}
+\subsection{Phase}
+%\input{./chapters/ee18btech11037.tex}
+\section{Second order System}
+\subsection{Damping}
+%\input{./chapters/ee18btech11012.tex}
+\subsection{Example}
+%\input{./chapters/ee18btech11002.tex}
+\subsection{Settling Time}
+%\input{./chapters/ee18btech11035.tex}
+%
+%\section{Routh Hurwitz Criterion}
+\subsection{Routh Array}
+%\input{./chapters/ee18btech11014.tex}
+\subsection{Marginal Stability}
+%\input{./chapters/ee18btech11005.tex}
+\subsection{Stability}
+%\input{./chapters/ee18btech11008.tex}
+\subsection{Example}
+%\input{./chapters/ee18btech11020.tex}
+\subsection{Example}
+%\input{./chapters/ee18btech11039.tex}
+%
+\section{State-Space Model}
+\subsection{Controllability and Observability}
+%\input{./chapters/ee18btech11006.tex}
+\subsection{Second Order System}
+%\input{./chapters/ee18btech11011.tex}
+\subsection{Example}
+%\input{./chapters/ee18btech11023.tex}
+\subsection{Example}
+%\input{./chapters/ee18btech11026.tex}
+\subsection{Example}
+%\input{./chapters/ee18btech11031.tex}
+\subsection{Example}
+%\input{./chapters/ee18btech11047.tex}
+%\subsection{Example}
+%\input{./chapters/ee18btech11040.tex}
+
+\section{Nyquist Plot}
+\subsection{Introduction}
+%\input{./chapters/ee18btech11007.tex}
+\subsection{Example}
+%\input{./chapters/ee18btech11034.tex}
+
+\section{Compensators}
+\subsection{Phase Lead}
+\label{sec:ee18btech11021}
+%\input{./chapters/ee18btech11021.tex}
+\subsection{Lag Lead}
+%\label{sec:ee18btech11044}
+%\input{./chapters/ee18btech11010.tex}
+%\input{./chapters/ee18btech11044.tex}
+\subsection{Example}
+%\input{./chapters/ee18btech11027.tex}
+
+\section{Gain Margin}
+\subsection{Introduction}
+%\input{./chapters/ee18btech11016.tex}
+\subsection{Example}
+%\input{./chapters/ee18btech11025.tex}
+\subsection{Example}
+%\input{./chapters/ee18btech11038.tex}
+\section{Phase Margin}
+\subsection{Intoduction}
+%\input{./chapters/ee18btech11017.tex}
+\subsection{Example}
+%\input{./chapters/ee18btech11036.tex}
+\section{Oscillator}
+\subsection{Introduction}
+%\input{./chapters/ee18btech11030.tex}
+\subsection{Example}
+%\input{./chapters/ee18btech11019.tex}
+%
+\section{Root Locus}
+\subsection{Introduction}
+%\input{./chapters/ee18btech11046.tex}
+\input{./chapters/ee18btech11050.tex}
+
+\end{document}
