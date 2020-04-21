@@ -9,4 +9,4 @@ plt.ylabel('imaginary part of s')
 plt.grid()
 plt.show()
 
-
+plt.savefig('./figs/ee18btech11050.pdf')
