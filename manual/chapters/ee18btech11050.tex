@@ -9,7 +9,8 @@ The value of the gain K ($>$0) at which the root locus crosses the imaginary axi
 
 \solution
 
-\item Root Locus: \\
+\item Root Locus: 
+
 	  The Root locus is the locus of the roots of the characteristic equation, which are the poles of closed loop transfer function, by varying system gain K from $0$ to $\infty$.
 
 \item The characteristic equation of the closed loop control system is: 
@@ -21,7 +22,8 @@ The value of the gain K ($>$0) at which the root locus crosses the imaginary axi
     The points on the root locus branches must satisfy the \textbf{angle condition.}
     We can find the value of K for the points on the root locus branches by using \textbf{magnitude condition.}
 
-\item Angle Condition: \\
+\item Angle Condition: 
+
     Given the Characteristic equation, we can write it as:
     \begin{align}
          G(s)H(s) = -1 + j0   
@@ -30,7 +32,7 @@ The value of the gain K ($>$0) at which the root locus crosses the imaginary axi
     $\angle$G(s)H(s) =\[ \arctan(\frac{0}{-1}) = (2n+1)\pi\]
     The angle condition is the point at which the angle of the transfer function is an odd multiple of 180.
    
-\item Magnitude Condition \\
+\item Magnitude Condition :
 
     Magnitude of G(s)H(s) is:
     \begin{align}
@@ -42,7 +44,8 @@ The value of the gain K ($>$0) at which the root locus crosses the imaginary axi
     \end{align}
     The magnitude condition is that the point (which satisfied the angle condition) at which the magnitude of the transfer function is one.
 
-\item For given transfer function: \\
+\item For given transfer function: 
+
     H(s) = 1. So, closed loop transfer function will be
     \begin{align}
         T(s) = \frac{K}{s(s+1)(s+3)+K}
@@ -53,7 +56,8 @@ The value of the gain K ($>$0) at which the root locus crosses the imaginary axi
         s^3 + 4s^2 + 3s + K = 0
     \end{align}
 
-\item Routh Array Table:\\
+\item Routh Array Table:
+
     \textbf{If all elements of any row of the Routh array table are zero, then the root locus branch intersects the imaginary axis}\\
     Routh Array Table:
     \begin{align}
@@ -63,10 +67,11 @@ The value of the gain K ($>$0) at which the root locus crosses the imaginary axi
     For poles to be on imaginary axis, row $s^1$ should be zero. So,     
     \begin{align}
         \frac{12-K}{4} = 0
-    \end{align}\\
+    \end{align}
     Hence, K = 12.
 
-\item Verification: \\
+\item Verification: 
+
     Auxilliary equation:
     \begin{align}
         4s^2 + K = 0
@@ -74,13 +79,15 @@ The value of the gain K ($>$0) at which the root locus crosses the imaginary axi
     \begin{align}
         4s^2 + 12 = 0
     \end{align}
-    $\implies$s = $-j\sqrt{3}$,$+j\sqrt{3}$\\ 
+    $\implies$s = $-j\sqrt{3}$,$+j\sqrt{3}$ .
     Thus a pair of poles lie on imaginary axis for K = 12.
    
 
 \item Root Locus plot
-
-	\includegraphics[width=\columnwidth]{./figs/ee18btech11050.pdf}
+    \begin{figure}[!h]
+        \includegraphics[width=\columnwidth]{./figs/ee18btech11050.eps}
+    \end{figure}
+	
 Code to plot root locus:
 \begin{lstlisting}
 codes/ee18btech11050.py
