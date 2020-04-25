@@ -25,6 +25,8 @@ plt.text(14.38,-50, '({}, {})'.format(14.38,-50))
 plt.axhline(y = -50,xmin=0,color = 'r',linestyle='dashed')
 plt.axvline(x = 14.38,ymin=0,color='k',linestyle='dashed')
 plt.semilogx(w1, mag1)    # Bode magnitude plot
+plt.xlabel('Frequency')
+plt.ylabel('Magnitude')
 plt.title('Magnitude Plot')
 plt.grid()
 
@@ -33,6 +35,8 @@ plt.text(14.38,-180, '({}, {})'.format(14.38,-180))
 plt.axhline(y = -180,xmin=0,color = 'r',linestyle='dashed')
 plt.axvline(x = 14.38,ymin=0,color='k',linestyle='dashed')
 plt.semilogx(w1, phase1)  # Bode phase plot
+plt.xlabel('Frequency')
+plt.ylabel('Phase')
 plt.title('Phase Plot')
 plt.grid()
 
