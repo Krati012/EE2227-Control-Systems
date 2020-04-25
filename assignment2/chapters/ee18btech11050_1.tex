@@ -1,10 +1,9 @@
-
 \begin{enumerate}[label=\thesection.\arabic*.,ref=\thesection.\theenumi]
 \numberwithin{equation}{enumi}
 \item For a unity feedback system shown in Fig \ref{fig:ee18btech11050_fig1}
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=\columnwidth]{./figs/gvvv.eps}
+\includegraphics[width=\columnwidth]{./figs/ee18btech11050_ques.eps}
 \caption{}
 \label{fig:ee18btech11050_fig1}
 \end{figure}
@@ -56,7 +55,7 @@ Substituting value of $\omega_{pc}$ in \eqref{eq:ee18btech11050_2} gives
 This can be verified from fig \ref{fig:ee18btech11050_fig2}
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=\columnwidth]{./figs/part1.eps}
+\includegraphics[width=\columnwidth]{./figs/ee18btech11050/ee18btech11050_1.eps}
 \caption{}
 \label{fig:ee18btech11050_fig2}
 \end{figure}
@@ -75,8 +74,8 @@ Phase Margin:
 where $\phi_{gc}$ is the phase angle at the gain cross over frequency $\omega_{gc}$.
 At gain cross over frequency,
 \begin{align}
-    |G(j\omega_{gc})| = 0
-    %\label{eq:ee18btech11050_2}
+    |G(j\omega_{gc})| = 1
+    %\label{eq:ee18btech11050_22}
 \end{align}
 \begin{align}
     \implies -20\log{|G(j\omega_{gc})|} = 0
@@ -110,34 +109,34 @@ Substituting this value in \eqref{eq:ee18btech11050_111}, we get
     \label{eq:ee18btech11050_12}
 \end{align}
 
-This again can be verified from fig \ref{fig:ee18btech11050_fig3}
+This again can be verified from fig \ref{fig:ee18btech11050_fig3}.
 The following code generates Fig. \ref{fig:ee18btech11050_fig3}
 \begin{lstlisting}
 codes/ee18btech11050_2.py
 \end{lstlisting}
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=\columnwidth]{./figs/part2.eps}
+\includegraphics[width=\columnwidth]{./figs/ee18btech11050/ee18btech11050_2.eps}
 \caption{}
 \label{fig:ee18btech11050_fig3}
 \end{figure}
 
-\item Design the value gain (K) to yield maximum peak overshoot of 20\% for a step input.
+\item Design the value of gain (K) to yield maximum peak overshoot of 20\% for a step input.
 
 \item \solution
-For given system, closed loop transfer function:
+Closed loop transfer function:
 \begin{align}
     T(s) = \frac{G(s)}{1+G(s)H(s)}
 \end{align}
 where H(s) = 1
 \begin{align}
     \implies T(s) = \frac{K}{(s+3)(s+6)(s+15)+K}
-    \label{eq:ee18btech11050_7}
+    \label{eq:ee18btech11050_13}
 \end{align}
 Output will be:
 \begin{align}
     \implies Y(s) = \frac{1}{s}\frac{K}{(s+3)(s+6)(s+15)+K}
-    \label{eq:ee18btech11050_7}
+    \label{eq:ee18btech11050_14}
 \end{align}
 
 Maximum peak overshoot :
@@ -148,7 +147,7 @@ Maximum peak overshoot :
 which is given as 20\%.
 Here, $t_p$ is the peak time. Solving this, we get
 \begin{align}
-    \implies \frac{y(t_p)}{y(\infty} = 1.2
+    \implies \frac{y(t_p)}{y(\infty)} = 1.2
     \label{eq:ee18btech11050_15}
 \end{align}
 Plotting y(t) for different values of K, we choose the value of K, which gives the above ratio, which is verfied from fig \ref{fig:ee18btech11050_fig4}.
@@ -161,9 +160,12 @@ Thus, we get
     \implies K = 928.035
     \label{eq:ee18btech11050_17}
 \end{align}
+
+
+
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=\columnwidth]{./figs/F.eps}
+\includegraphics[width=\columnwidth]{./figs/ee18btech11050/ee18btech11050_3.eps}
 \caption{}
 \label{fig:ee18btech11050_fig4}
 \end{figure}
@@ -172,3 +174,5 @@ The following code generates fig \ref{fig:ee18btech11050_fig4}
 \begin{lstlisting}
 codes/ee18btech11050_3.py
 \end{lstlisting}
+
+\end{enumerate}
