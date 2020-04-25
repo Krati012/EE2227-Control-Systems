@@ -1,18 +1,43 @@
 \begin{enumerate}[label=\thesection.\arabic*.,ref=\thesection.\theenumi]
 \numberwithin{equation}{enumi}
 \item For a unity feedback system shown in Fig \ref{fig:ee18btech11050_fig1}
-\begin{figure}[!ht]
-\centering
-\includegraphics[width=\columnwidth]{./figs/ee18btech11050_ques.eps}
-\caption{}
-\label{fig:ee18btech11050_fig1}
+
+\begin{figure}
+    \begin{center}
+        \tikzstyle{block} = [draw, rectangle, 
+        minimum height=3em, minimum width=6em]
+        \tikzstyle{sum} = [draw, circle, node distance=1cm]
+        \tikzstyle{input} = [coordinate]
+        \tikzstyle{output} = [coordinate]
+        \tikzstyle{pinstyle} = [pin edge={to-,thin,black}]
+        \begin{tikzpicture}[auto, node distance=2cm,>=latex']
+            \node [input, name=input] {};
+            \node [sum, right of=input] (sum) {X};
+            \node [block, right of=sum, %pin={[pinstyle]above:},
+                    ] (system) {$G(s)$};
+ 
+            \node [output, right of=system] (output) {};
+            \node [output,below of=system] (measurements) {};
+
+            \draw [draw,->] (input) -- node {$R(s)$} (sum);
+            \draw [->] (sum) -- node[anchor=north] {$-$} (system);
+            \draw [->] (system) -- node [name=y] {$Y(s)$}(output);
+            \draw [-] (y) |- (measurements);
+            \draw [->] (measurements) -| node[pos=0.99] {$+$} 
+                node [near end] {} (sum);
+        \end{tikzpicture}
+
+    \end{center}
+    \caption{}
+    \label{fig:ee18btech11050_fig1}
 \end{figure}
+
 having transfer function
 \begin{align}
     G(s) = \frac{K}{(s+3)(s+9)(s+15)}
     \label{eq:ee18btech11050_1}
 \end{align}
-design the value of gain(K), for a gain margin of 50dB.
+design the value of gain(K), for a gain margin of 50 dB.
 
 \item \solution
 
@@ -55,7 +80,7 @@ Substituting value of $\omega_{pc}$ in \eqref{eq:ee18btech11050_2} gives
 This can be verified from fig \ref{fig:ee18btech11050_fig2}
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=\columnwidth]{./figs/ee18btech11050/ee18btech11050_1.eps}
+\includegraphics[width=\columnwidth]{./figs/ee18btech11050_1.eps}
 \caption{}
 \label{fig:ee18btech11050_fig2}
 \end{figure}
@@ -116,7 +141,7 @@ codes/ee18btech11050_2.py
 \end{lstlisting}
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=\columnwidth]{./figs/ee18btech11050/ee18btech11050_2.eps}
+\includegraphics[width=\columnwidth]{./figs/ee18btech11050_2.eps}
 \caption{}
 \label{fig:ee18btech11050_fig3}
 \end{figure}
@@ -148,7 +173,7 @@ which is given as 20\%.
 Here, $t_p$ is the peak time. Solving this, we get
 \begin{align}
     \implies \frac{y(t_p)}{y(\infty)} = 1.2
-    \label{eq:ee18btech11050_15}
+    \label{eq:ee18btech11050_18}
 \end{align}
 Plotting y(t) for different values of K, we choose the value of K, which gives the above ratio, which is verfied from fig \ref{fig:ee18btech11050_fig4}.
 Thus, we get 
@@ -165,7 +190,7 @@ Thus, we get
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=\columnwidth]{./figs/ee18btech11050/ee18btech11050_3.eps}
+\includegraphics[width=\columnwidth]{./figs/ee18btech11050_3.eps}
 \caption{}
 \label{fig:ee18btech11050_fig4}
 \end{figure}
