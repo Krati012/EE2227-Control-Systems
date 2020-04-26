@@ -45,11 +45,7 @@ Gain Margin:
     GM = -20\log{|G(j\omega_{pc})|}
     \label{eq:ee18btech11050_2}
 \end{align}
-where, $\omega_{pc}$ is the phase cross-over frequency, at which
-\begin{align}
-    \angle {G(j \omega_{pc})} = -180 \degree
-    \label{eq:ee18btech11050_3}
-\end{align}
+where, $\omega_{pc}$ is the phase cross-over frequency.
 First substitute, 
 \begin{align}
     s = j\omega
@@ -96,13 +92,9 @@ Phase Margin:
     \label{eq:ee18btech11050_7}
 \end{align}
 where $\phi_{gc}$ is the phase angle at the gain cross over frequency $\omega_{gc}$.
-At gain cross over frequency,
+
 \begin{align}
-    |G(j\omega_{gc})| = 1
-    %\label{eq:ee18btech11050_22}
-\end{align}
-\begin{align}
-    \implies -20\log{|G(j\omega_{gc})|} = 0
+    -20\log{|G(j\omega_{gc})|} = 0
     \label{eq:ee18btech11050_111}
 \end{align}
 
@@ -150,11 +142,7 @@ codes/ee18btech11050_2.py
 \item \solution
 Closed loop transfer function:
 \begin{align}
-    T(s) = \frac{G(s)}{1+G(s)H(s)}
-\end{align}
-where H(s) = 1
-\begin{align}
-    \implies T(s) = \frac{K}{(s+3)(s+6)(s+15)+K}
+    T(s) = \frac{K}{(s+3)(s+6)(s+15)+K}
     \label{eq:ee18btech11050_13}
 \end{align}
 Output will be:
@@ -169,7 +157,7 @@ Maximum peak overshoot :
     \label{eq:ee18btech11050_15}
 \end{align}
 which is given as 20\%.
-Here, $t_p$ is the peak time. Solving this, we get
+Here, $t_p$ is the peak time.
 \begin{align}
     \implies \frac{y(t_p)}{y(\infty)} = 1.2
     \label{eq:ee18btech11050_18}
