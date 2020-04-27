@@ -1,48 +1,39 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Fri Apr 24 16:26:24 2020
+Created on Mon Apr 26, 21:06:20 2020
 
 @author: krati
 """
-
 from scipy import signal
 import matplotlib.pyplot as plt
+import numpy as np
+
 
 #if using termux
 import subprocess
 import shlex
 #end if
 
-s1 = signal.lti([16.406],[1,27,207,405])
+zeros = []  #zeros of transfer function
+poles = [0,-3,-6] #poles of tf
 
-w1, mag1, phase1 = signal.bode(s1)
+H_s = signal.ZerosPolesGain(zeros, poles, [50])  #feed zeros and poles as inputs to this function to get H_s
+omega= np.linspace(-100, 100,20000) #range of values over which H is taken
 
-plt.figure()
+w, H = signal.freqresp(H_s, w=omega)   #this function returns frequency response H of H_s
 
-plt.subplot(2,1,1)
-plt.text(14.38,-50, '({}, {})'.format(14.38,-50))
-plt.axhline(y = -50,xmin=0,color = 'r',linestyle='dashed')
-plt.axvline(x = 14.38,ymin=0,color='k',linestyle='dashed')
-plt.semilogx(w1, mag1)    # Bode magnitude plot
-plt.xlabel('Frequency')
-plt.ylabel('Magnitude')
-plt.title('Magnitude Plot')
+plt.plot(H.real, H.imag, )
+plt.ylabel("${Im}\{G(s)\}$")
+plt.title("NYQUIST PLOT")
+plt.xlabel("${Re}\{G(s)\}$")
 plt.grid()
-
-plt.subplot(2,1,2)
-plt.text(14.38,-180, '({}, {})'.format(14.38,-180))
-plt.axhline(y = -180,xmin=0,color = 'r',linestyle='dashed')
-plt.axvline(x = 14.38,ymin=0,color='k',linestyle='dashed')
-plt.semilogx(w1, phase1)  # Bode phase plot
-plt.xlabel('Frequency')
-plt.ylabel('Phase')
-plt.title('Phase Plot')
-plt.grid()
+plt.xlim(-1.6, 0.2)
+plt.ylim(-700, 700)
 
 #if using termux
-plt.savefig('./figs/ee18btech11050/ee18btech11050_1.pdf')
-plt.savefig('./figs/ee18btech11050/ee18btech11050_1.eps')
-subprocess.run(shlex.split("termux-open ./figs/ee18btech11050/ee18btech11050_1.pdf"))
+plt.savefig('./figs/ee18btech11050_1.eps')
+plt.savefig('./figs/ee18btech11050_1.pdf')
+subprocess.run(shlex.split("termux-open ./figs/ee18btech11050_1.pdf"))
 #else
 #plt.show()
