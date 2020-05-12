@@ -1,0 +1,103 @@
+\begin{enumerate}[label=\thesection.\arabic*.,ref=\thesection.\theenumi]
+\numberwithin{equation}{enumi}
+\renewcommand{\thefigure}{\theenumi.\arabic{figure}}
+
+\item For the circuit in Fig. \ref{fig:ee18btech11050_f1} (ignore the amplitude stabilization circuitry), find the loop gain GH by breaking the circuit at node X. 
+
+\begin{figure}[!ht]
+	\begin{center}
+		\resizebox{\columnwidth}{!}{\input{./figs/ee18btech11050/quesfig.tex}}
+	\end{center}
+\caption{}
+\label{fig:ee18btech11050_f1}
+\end{figure}
+
+\item \solution
+The equivalent control system representation of Oscillator circuit is shown in Fig. \ref{fig:ee18btech11050_f4}. Note that oscillator circuits do not have a input.
+\begin{figure}[!ht]
+	\begin{center}
+		\resizebox{\columnwidth}{!}{\input{./figs/ee18btech11050/blockdiagram.tex}}
+	\end{center}
+\caption{}
+\label{fig:ee18btech11050_f4}
+\end{figure}
+After removing the amplitude stabilization circuitry, when we break the loop at X, the value of gain
+\begin{align}
+    GH = \frac{v_o(j\omega)}{v_x(j\omega)}
+\end{align}
+from Fig. \ref{fig:ee18btech11050_f2}
+\begin{figure}[!ht]
+	\begin{center}
+		\resizebox{\columnwidth}{!}{\input{./figs/ee18btech11050/finalcircuit.tex}}
+	\end{center}
+\caption{}
+\label{fig:ee18btech11050_f2}
+\end{figure}
+\begin{align}
+    v_1 = 0
+\end{align}
+\begin{align}
+    \implies v_o = -i_xR_f
+    \label{ee18btech11050_eq1}
+\end{align}
+
+Considering the circuit between node X and inverting terminal of op-amp,
+
+\begin{align}
+    \frac{v_x}{i_x} = (R+\frac{6}{sC}+\frac{5}{s^2C^2R}+\frac{1}{s^3C^3R^2})
+\end{align}
+From \eqref{ee18btech11050_eq1}
+\begin{align}
+    \frac{v_x}{v_o} = -\frac{R}{R_f}(1+\frac{6}{sCR}+\frac{5}{s^2C^2R^2}+\frac{1}{s^3C^3R^3})
+\end{align}
+
+\begin{align}
+    \implies \frac{v_o}{v_x} = -\frac{R_fs^3C^3R^3}{R(s^3C^3R^3+6s^2C^2R^2+5sCR+1)}
+\end{align}
+Substituting $s=j\omega$ gives us the transfer function
+\begin{align}
+    \frac{v_o}{v_x} = GH = \frac{\omega^2C^2R_fR}{(5-\omega^2C^2R^2)+j(6\omega CR-\frac{1}{\omega CR})}
+    \label{ee18btech11050_eq2}
+\end{align}
+
+\item Find frequency of oscillation $f_0$.
+\item \solution 
+For system to oscillate at a frequency $f_0$, 
+\begin{align}
+    GH = 1
+    \label{ee18btech11050_eq4}
+\end{align}
+\begin{align}
+    \implies \angle(GH) = 0
+\end{align}
+\begin{align}
+    \implies 6\omega_0 CR = \frac{1}{\omega_0 CR}
+\end{align}
+\begin{align}
+    \implies \omega_0 = \frac{1}{\sqrt{6}CR}
+\end{align}
+\begin{align}
+    \implies f_0 = 406.1 Hz
+\end{align}
+\item Find $R_f$ for oscillation to begin.
+\item \solution From \eqref{ee18btech11050_eq4}
+\begin{align}
+    Re(GH) = 1
+\end{align}
+\begin{align}
+    \implies \frac{R_f\omega_0^2C^2R^2}{5-\omega_0^2C^2R^2} = 1
+\end{align}
+\begin{align}
+    \implies R_f = 290 k\ohm
+\end{align}
+Thus, for the oscillations to begin, $R_f$ should be slighty greater than $290k\ohm$.
+\item Tabulate your results.
+\item \solution See table \ref{parameters}
+\begin{table}[!ht]
+\centering
+\input{./tables/ee18btech11050/table1.tex}
+\caption{calculated parameters}
+\label{parameters}
+\end{table}
+
+\end{enumerate}
