@@ -15,10 +15,11 @@ import shlex
 #end
 
 #Loading the data
-data = np.loadtxt( 'ee18btech11050.dat' )
+data = np.loadtxt( './codes/ee18btech11050/spice/ee18btech11050.dat')
 #PLotting the data from spice simulation
 plt.plot(data[:,0],data[:,1])
 plt.xlim(78.9,78.93)
+#end points of one cycle
 x1 = 78.908846
 x2 = 78.91131
 
@@ -39,6 +40,6 @@ print("Amplitude is:",max(data[:,1]))
 #if using termux
 plt.savefig('./figs/ee18btech11050/ee18btech11050_sim2.pdf')
 plt.savefig('./figs/ee18btech11050/ee18btech11050_sim2.eps')
-#subprocess.run(shlex.split("termux-open ./figs/ee18btech11047/ee18btech11047_spice2.pdf"))
+subprocess.run(shlex.split("termux-open ./figs/ee18btech11050/ee18btech11050_sim2.pdf"))
 #else
-plt.show()
+#plt.show()
