@@ -13,7 +13,7 @@
 \end{figure}
 
 \item \solution
-The equivalent control system representation of Oscillator circuit is shown in Fig. \ref{fig:ee18btech11050_f4}. Note that oscillator circuits do not have a input.
+The equivalent control system representation of Oscillator circuit is shown in Fig. \ref{fig:ee18btech11050_f4}. Oscillator circuits do not have input.
 \begin{figure}[!ht]
 	\begin{center}
 		\resizebox{\columnwidth}{!}{\input{./figs/ee18btech11050/blockdiagram.tex}}
@@ -21,11 +21,11 @@ The equivalent control system representation of Oscillator circuit is shown in F
 \caption{}
 \label{fig:ee18btech11050_f4}
 \end{figure}
-After removing the amplitude stabilization circuitry, when we break the loop at X, the value of gain
+After removing the amplitude stabilization circuitry, when we break the loop at X, from Fig. \ref{fig:ee18btech11050_f2} the value of gain
 \begin{align}
     GH = \frac{v_o(j\omega)}{v_x(j\omega)}
 \end{align}
-from Fig. \ref{fig:ee18btech11050_f2}
+
 \begin{figure}[!ht]
 	\begin{center}
 		\resizebox{\columnwidth}{!}{\input{./figs/ee18btech11050/finalcircuit.tex}}
@@ -40,11 +40,18 @@ from Fig. \ref{fig:ee18btech11050_f2}
     \implies v_o = -i_xR_f
     \label{ee18btech11050_eq1}
 \end{align}
-
-Considering the circuit between node X and inverting terminal of op-amp,
+\begin{align}
+    v_a = (\frac{1+sRC}{sC})i_x
+\end{align}
+\begin{align}
+    \implies v_b = (R + \frac{3}{sC} + \frac{1}{s^2C^2R})i_x
+\end{align}
+\begin{align}
+    \implies v_x = (R + \frac{6}{sC} + \frac{5}{s^2C^2R} + \frac{1}{s^3C^3R^2})i_x
+\end{align}
 
 \begin{align}
-    \frac{v_x}{i_x} = (R+\frac{6}{sC}+\frac{5}{s^2C^2R}+\frac{1}{s^3C^3R^2})
+    \implies\frac{v_x}{i_x} = (R+\frac{6}{sC}+\frac{5}{s^2C^2R}+\frac{1}{s^3C^3R^2})
 \end{align}
 From \eqref{ee18btech11050_eq1}
 \begin{align}
@@ -62,13 +69,13 @@ Substituting $s=j\omega$ gives us the transfer function
 
 \item Find frequency of oscillation $f_0$.
 \item \solution 
-For system to oscillate at a frequency $f_0$, 
+For system to oscillate at a frequency $\omega_0$, 
 \begin{align}
-    GH = 1
+    L(j\omega_0) = G(j\omega_0)H(j\omega_0) = 1
     \label{ee18btech11050_eq4}
 \end{align}
 \begin{align}
-    \implies \angle(GH) = 0
+    \implies \angle(G(j\omega_0)H(j\omega_0)) = 0
 \end{align}
 \begin{align}
     \implies 6\omega_0 CR = \frac{1}{\omega_0 CR}
@@ -77,20 +84,29 @@ For system to oscillate at a frequency $f_0$,
     \implies \omega_0 = \frac{1}{\sqrt{6}CR}
 \end{align}
 \begin{align}
+    \implies \omega_0 = 2551.55 rad/sec
+\end{align}
+\begin{align}
     \implies f_0 = 406.1 Hz
 \end{align}
 \item Find $R_f$ for oscillation to begin.
 \item \solution From \eqref{ee18btech11050_eq4}
 \begin{align}
-    Re(GH) = 1
+    Re(G(j\omega_0)H(j\omega_0)) = 1
 \end{align}
 \begin{align}
-    \implies \frac{R_f\omega_0^2C^2R^2}{5-\omega_0^2C^2R^2} = 1
+    \implies \frac{R_f\omega_0^2C^2R}{5-\omega_0^2C^2R^2} = 1
+\end{align}
+\begin{align}
+    \implies R_f = 29R
 \end{align}
 \begin{align}
     \implies R_f = 290 k\ohm
 \end{align}
-Thus, for the oscillations to begin, $R_f$ should be slighty greater than $290k\ohm$.
+Thus, for the oscillations to begin,
+\begin{align}
+    R_f \geq 290 k\ohm
+\end{align}
 \item Tabulate your results.
 \item \solution See table \ref{parameters}
 \begin{table}[!ht]
@@ -99,5 +115,55 @@ Thus, for the oscillations to begin, $R_f$ should be slighty greater than $290k\
 \caption{calculated parameters}
 \label{parameters}
 \end{table}
+
+\item Verify results using Spice Simulation.
+
+\item \solution Following readme provides instructions for simulation in spice
+
+\begin{lstlisting}
+codes/ee18btech11050/spice/README.md
+\end{lstlisting}
+
+The following netlist simulates the given circuit in \ref{fig:ee18btech11050_f1}
+
+\begin{lstlisting}
+codes/ee18btech11050/spice/ee18btech11050_sim.net
+\end{lstlisting}
+
+The following code plots the oscillator output from spice simulation, which is shown in fig \ref{fig:ee18btech11050_f6}
+
+\begin{lstlisting}
+codes/ee18btech11050/spice/ee18btech11050_sim.py
+\end{lstlisting}
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\columnwidth]{./figs/ee18btech11050/ee18btech11050_sim.eps}
+\caption{}
+\label{fig:ee18btech11050_f6}
+\end{figure}
+
+The following code plots a part of spice output generated above, where a sinusoidal output can be clearly observed shown in fig \ref{fig:ee18btech11050_f7}
+
+\begin{lstlisting}
+codes/ee18btech11050/spice/ee18btech11050_sim2.py
+\end{lstlisting}
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\columnwidth]{./figs/ee18btech11050/ee18btech11050_sim2.eps}
+\caption{}
+\label{fig:ee18btech11050_f7}
+\end{figure}
+
+From fig \ref{fig:ee18btech11050_f7}, time period is calculated from one cycle:
+\begin{align}
+    T = 78.91131 - 78.908846 = 0.002464 sec
+\end{align}
+\begin{align}
+    \implies f = 405.844 Hz
+\end{align}
+
+Hence frequency is verified through spice simulation.
 
 \end{enumerate}
