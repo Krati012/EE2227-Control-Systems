@@ -14,7 +14,7 @@ import subprocess
 import shlex
 #end if
 
-data=np.loadtxt('./ee18btech11050.dat')  
+data=np.loadtxt('./codes/ee18btech11050/spice/ee18btech11050.dat')  
 plt.plot(data[:,0],data[:,1])  
 plt.xlim(72, 80)
 plt.grid()
@@ -25,6 +25,6 @@ plt.title("Output from spice simulation")
 #if using termux
 plt.savefig('./figs/ee18btech11050/ee18btech11050_sim.pdf')
 plt.savefig('./figs/ee18btech11050/ee18btech11050_sim.eps')
-#subprocess.run(shlex.split("termux-open ./figs/ee18btech11047/ee18btech11047_spice.pdf"))
+subprocess.run(shlex.split("termux-open ./figs/ee18btech11050/ee18btech11050_sim.pdf"))
 #else
-plt.show()
+#plt.show()
