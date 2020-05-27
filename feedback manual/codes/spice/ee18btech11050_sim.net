@@ -1,0 +1,21 @@
+* Z:\home\krati\spice\ee18btech11050_sim.asc
+XU1 0 N001 Vcc -Vcc Vout LM741/NS
+V1 Vcc 0 15
+V2 0 -Vcc 15
+C1 N004 N003 16n
+C2 N003 N002 16n
+C3 N002 Vout 16n
+R5 N002 0 10k
+R6 N003 0 10k
+R3 Vout N001 292k
+R8 N001 N004 10k
+.include /home/krati/spice/LM741.MOD
+.tran 0.002s 100s 
+.include LM741.MOD
+.control
+run
+wrdata ee18btech11050.dat V(Vout)
+.backanno
+.endc
+.end
+
