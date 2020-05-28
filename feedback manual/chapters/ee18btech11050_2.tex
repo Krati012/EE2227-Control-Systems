@@ -107,6 +107,44 @@ Thus, for the oscillations to begin,
 \begin{align}
     R_f \geq 290 k\ohm
 \end{align}
+
+\item Find feedback gain H.
+\item \solution From feedback circuit as shown in fig \ref{fig:ee18btech11050_f8}, feedback gain 
+\begin{align}
+    H(j\omega) = \frac{v_1(j\omega)}{v_o(j\omega)}
+\end{align}
+
+\begin{figure}[!ht]
+	\begin{center}
+		\resizebox{\columnwidth}{!}{\input{./figs/ee18btech11050/feedback.tex}}
+	\end{center}
+\caption{}
+\label{fig:ee18btech11050_f8}
+\end{figure}
+
+\begin{align}
+    v_a = \brak{\frac{sCR}{sCR+1}}v_o
+\end{align}
+\begin{align}
+    \implies v_b = \brak{\frac{s^2C^2R^2}{(sCR+1)^2}}v_o
+\end{align}
+\begin{align}
+    v_1 = v_b - i_x\brak{R + \frac{1}{sC}}
+\end{align}
+From \eqref{ee18btech11050_eq1},
+\begin{align}
+    v_1 = v_b + \frac{v_o}{R_f}\brak{R + \frac{1}{sC}}
+\end{align}
+\begin{align}
+    v_1 = \brak{\frac{R}{R_f} + \frac{1}{sCR_f} + \frac{s^2C^2R^2}{(sCR+1)^2}}v_o
+\end{align}
+\begin{align}
+    \implies \frac{v_1}{v_o} = \frac{R}{R_f} + \frac{1}{sCR_f} + \frac{s^2C^2R^2}{(sCR+1)^2}
+\end{align}
+\begin{align}
+    \implies H(j\omega) = \frac{R}{R_f} + \frac{1}{j\omega CR_f} - \frac{\omega^2C^2R^2}{1-\omega^2C^2R^2 + j(2\omega CR)}
+\end{align}
+
 \item Tabulate your results.
 \item \solution See table \ref{parameters}
 \begin{table}[!ht]
